@@ -1,0 +1,3 @@
+C:/Users/user/Desktop/dev/lab5_ifstream_ofstream/build/CMakeFiles/lab5_ifstream_ofstream.dir
+C:/Users/user/Desktop/dev/lab5_ifstream_ofstream/build/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/dev/lab5_ifstream_ofstream/build/CMakeFiles/rebuild_cache.dir
