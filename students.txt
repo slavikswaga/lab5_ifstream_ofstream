@@ -1,0 +1,4 @@
+Yarik 17 88.3
+Slava 18 99
+Dmitriy 19 100
+Artem 18 86.5

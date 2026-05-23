@@ -39,8 +39,10 @@ void write_func(){
 void read_func(){
     std::string file = "";
     std::cout << "Input the file you want to read" << std::endl;
+    std::cout << "=====================" << std::endl;
     std::cout << "sales.csv" << std::endl;
     std::cout << "filtered_sales.csv" << std::endl;
+    std::cout << "=====================" << std::endl;
     std::cin >> file;
     std::ifstream fin(file);
     if(!fin.is_open()){

@@ -21,8 +21,7 @@ void write_func(){
     for(int i = 0; i < count_students; i++){
         Student s;
         std::cout << "Input name of student\n";
-        std::cin.ignore();
-        std::getline(std::cin, s.name);
+        std::cin >> s.name;
         std::cout << "Input age of student\n";
         std::cin >> s.age;
         std::cout << "Input grade of student\n";
