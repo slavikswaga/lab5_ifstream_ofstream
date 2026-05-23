@@ -11,6 +11,22 @@ struct Sale{
     std::string product_category;
 };
 
+Sale pullSale(const std::string& line, Sale& s){
+        std::stringstream ss(line);
+        std::getline(ss, s.date_of_sale, ',');
+        ss >> s.num_of_buyer;
+        ss.ignore();
+        ss >> s.sum;
+        ss.ignore();
+        std::getline(ss, s.product_category);
+    return s;
+}
+
+void printSale(const Sale& s){
+    std::cout << s.date_of_sale << " - " << s.num_of_buyer << " - " << s.sum << " - " << s.product_category << std::endl;
+    return;
+}
+
 void write_func(){
     std::ofstream fout("sales.csv", std::ios::app);
     if(!fout.is_open()){
@@ -51,15 +67,9 @@ void read_func(){
     }
     std::string line;
     while(std::getline(fin, line)){
-        std::stringstream ss(line);
         Sale s;
-        std::getline(ss, s.date_of_sale, ',');
-        ss >> s.num_of_buyer;
-        ss.ignore();
-        ss >> s.sum;
-        ss.ignore();
-        std::getline(ss, s.product_category);
-        std::cout << s.date_of_sale << " - " << s.num_of_buyer << " - " << s.sum << " - " << s.product_category << std::endl;
+        pullSale(line, s);
+        printSale(s);
     }
     fin.close();
     return;
@@ -74,14 +84,8 @@ void calculate_total_sum(){
     }
     std::string line;
     while(std::getline(fin, line)){
-        std::stringstream ss(line);
         Sale s;
-        std::getline(ss, s.date_of_sale, ',');
-        ss >> s.num_of_buyer;
-        ss.ignore();
-        ss >> s.sum;
-        ss.ignore();
-        std::getline(ss, s.product_category);
+        pullSale(line, s);
         total_sum += s.sum;
     }
     fin.close();
@@ -109,24 +113,19 @@ void write_filtered_sales(){
     
     while(std::getline(fin, line)){
         Sale s;
-        std::stringstream ss(line);
-        std::getline(ss, s.date_of_sale, ',');
-        ss >> s.num_of_buyer;
-        ss.ignore();
-        ss >> s.sum;
-        ss.ignore();
-        std::getline(ss, s.product_category);
+        pullSale(line, s);
         if(s.date_of_sale == necessary_date){
             filtered.push_back(s);
         }
     }
     for(int i = 0; i < filtered.size(); i++){
-        fout << filtered[i].date_of_sale << "," << filtered[i].num_of_buyer << "," << filtered[i].sum << "," << filtered[i].product_category << std::endl;
+        printSale(filtered[i]);
     }
     fout.close();
     fin.close();
     return;
 }
+
 int main(){
     int choise = 0;
     std::cout << "Input command number:" << std::endl;
